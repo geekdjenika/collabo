@@ -1,7 +1,10 @@
 package geek.djenika.collabo.Modeles;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
+@Data
 @Entity
 public class Collaborateur {
     @Id
@@ -11,4 +14,8 @@ public class Collaborateur {
 
     String nom;
     String prenom;
+
+    @ManyToOne
+    @JoinColumn(name = "createur")
+    private Utilisateur utilisateur;
 }
