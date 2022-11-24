@@ -17,6 +17,7 @@ public class UserController {
 
     CollaborateurService collaborateurService;
 
+
     @GetMapping("/afficher")
     ResponseEntity<Object> getCollaborateurs() {
         return ResponseHandler.generateResponse(
