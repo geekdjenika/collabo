@@ -1,27 +1,41 @@
 package geek.djenika.collabo.Modeles;
 
+import lombok.Data;
+
 import javax.persistence.*;
-/*@Entity
-@Table(name = "users",
-        uniqueConstraints = {
-                @UniqueConstraint(columnNames = "username"),
-                @UniqueConstraint(columnNames = "email")
-        })*/
+
+@Entity
+@Table(name="user")
+@Data
 public class Utilisateur {
-        /*@Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
+    @Id
+    @Column(name="user_id")
+    private int userId;
 
-        @NotBlank
-        @Size(max = 20)
-        private String username;
+    @Column(name="user_name")
+    private String userName;
 
-        @NotBlank
-        @Size(max = 50)
-        @Email
-        private String email;
+    @Column(name="password")
+    private String password;
 
-        @NotBlank
-        @Size(max = 120)
-        private String password;*/
+    @Column(name="role")
+    private String role;
+
+
+    @Override
+    public int hashCode() {
+
+        return this.userId;
+    }
+
+
+    @Override
+    public boolean equals(Object obj) {
+
+
+        if(obj==null || !(obj instanceof Utilisateur) )
+            return false;
+        return this.userId==((Utilisateur)obj).getUserId();
+    }
+
 }

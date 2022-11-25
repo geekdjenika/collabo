@@ -6,12 +6,15 @@ import javax.persistence.*;
 
 @Data
 @Entity
+@Table(name="collaborateur")
 public class Collaborateur {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+    @Column(name="collabo_id")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int collaboid;
 
+    @Column(name="collabo_nom")
     String nom;
+    @Column(name="collabo_prenom")
     String prenom;
 }

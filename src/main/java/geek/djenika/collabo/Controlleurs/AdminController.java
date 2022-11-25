@@ -128,13 +128,9 @@ public class AdminController {
             }
         }
 
-
-
-
-
         return protectedInfo;
     }
-
+/*
     //@PostMapping("/ajouter")
     public ResponseEntity<Object> ajouterCollabo(@RequestBody Collaborateur collaborateur) {
         if (collaborateurService.ajouter(collaborateur) != null) {
@@ -187,5 +183,5 @@ public class AdminController {
                     collaborateurService.supprimer(id)
             );
         }
-    }
+    }*/
 }
