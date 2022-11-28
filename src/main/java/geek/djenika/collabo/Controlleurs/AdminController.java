@@ -68,7 +68,7 @@ public class AdminController {
     {
         return "Bienvenu, "+user.toString()+" !";
     }*/
-    @RequestMapping("/*")
+    //@RequestMapping("/*")
     public String getUserInfo(Principal user) {
         StringBuffer userInfo= new StringBuffer();
 

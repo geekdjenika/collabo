@@ -16,14 +16,15 @@ import java.util.List;
 @RequestMapping("/v1")
 public class CollaborateurController {
 
-    @Autowired
-    CollaborateurService collaborateurService;
+    //@Autowired
+    private CollaborateurService collaborateurService;
 
     @GetMapping("/collabos")
     public ResponseEntity<Object> getAllCollabo() {
         return ResponseHandler.generateResponse(
                 "OK",
                 HttpStatus.OK,
+                //"Quelque chose"
                 collaborateurService.findAllCollabo()
                 );
     }

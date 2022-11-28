@@ -24,8 +24,8 @@ public class CollaborateurServiceImpl implements CollaborateurService{
     }
 
     @Override
-    public Collaborateur findByCollaboName(String collaboName) {
-        Collaborateur collaborateur=collaborateurRepository.findByCollaboName(collaboName);
+    public Collaborateur findByCollaboName(String collabo_nom) {
+        Collaborateur collaborateur=collaborateurRepository.findByCollaboName(collabo_nom);
 
         return collaborateur;
     }
