@@ -51,6 +51,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.PUT).hasAnyRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE).hasAnyRole("ADMIN")
                 .antMatchers(HttpMethod.GET,"/v1/collabos").hasAnyRole("ADMIN","USER")
+                .and()
+                .formLogin()
+                .and()
+                .oauth2Login();
         ;
 
 
