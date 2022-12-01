@@ -1,0 +1,41 @@
+2022-11-30 14:24:11.318  INFO 19448 --- [main] geek.djenika.collabo.CollaboApplication  : Starting CollaboApplication using Java 1.8.0_301 on DCIREODCPR28 with PID 19448 (D:\GEEK\Backend\collabo\target\classes started by adjenika in D:\GEEK\Backend\collabo)
+2022-11-30 14:24:11.324  INFO 19448 --- [main] geek.djenika.collabo.CollaboApplication  : No active profile set, falling back to 1 default profile: "default"
+2022-11-30 14:24:12.193  INFO 19448 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-11-30 14:24:12.250  INFO 19448 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47 ms. Found 2 JPA repository interfaces.
+2022-11-30 14:24:13.315  INFO 19448 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-11-30 14:24:13.325  INFO 19448 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-30 14:24:13.325  INFO 19448 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-11-30 14:24:13.565  INFO 19448 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-30 14:24:13.566  INFO 19448 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2171 ms
+2022-11-30 14:24:13.898  INFO 19448 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-11-30 14:24:13.964  INFO 19448 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.12.Final
+2022-11-30 14:24:14.139  INFO 19448 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-11-30 14:24:14.250  INFO 19448 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-11-30 14:24:14.498  INFO 19448 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-11-30 14:24:14.543  INFO 19448 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2022-11-30 14:24:15.295  INFO 19448 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-11-30 14:24:15.302  INFO 19448 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-30 14:24:15.769  WARN 19448 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-11-30 14:24:15.840  WARN 19448 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authController' defined in file [D:\GEEK\Backend\collabo\target\classes\geek\djenika\collabo\Controlleurs\AuthController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'tokenService' defined in file [D:\GEEK\Backend\collabo\target\classes\geek\djenika\collabo\Services\TokenService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.security.oauth2.jwt.JwtEncoder' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2022-11-30 14:24:15.841  INFO 19448 --- [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-30 14:24:15.848  INFO 19448 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-11-30 14:24:15.871  INFO 19448 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-11-30 14:24:15.875  INFO 19448 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-30 14:24:15.889  INFO 19448 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-11-30 14:24:15.918 ERROR 19448 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in geek.djenika.collabo.Services.TokenService required a bean of type 'org.springframework.security.oauth2.jwt.JwtEncoder' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'org.springframework.security.oauth2.jwt.JwtEncoder' in your configuration.
+
