@@ -4,14 +4,20 @@ import geek.djenika.collabo.Model.Profil;
 import geek.djenika.collabo.Model.Utilisateur;
 import geek.djenika.collabo.Repository.ProfilRepository;
 import geek.djenika.collabo.Repository.UtilisateurRepository;
+import lombok.ToString;
+import net.bytebuddy.implementation.bind.MethodDelegationBinder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
 @Service
 @Transactional
+@ToString
 public class AccountServiceImpl implements AccountService {
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     UtilisateurRepository utilisateurRepository;
@@ -21,6 +27,8 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Utilisateur addNewUser(Utilisateur utilisateur) {
+        String pw = utilisateur.getPassword();
+        utilisateur.setPassword(passwordEncoder.encode(pw));
         return utilisateurRepository.save(utilisateur);
     }
 
@@ -34,6 +42,9 @@ public class AccountServiceImpl implements AccountService {
 
         Utilisateur utilisateur = utilisateurRepository.findByUserName(username);
         Profil profil = profilRepository.findByProfileName(profileName);
+
+        System.out.println("Voici l'utilisateur voulu : "+utilisateur+" son username est : "+username);
+        System.out.println("Voici le profil voulu : "+profil+" sa clé de recherche est : "+username);
 
         utilisateur.getProfils().add(profil);
 
