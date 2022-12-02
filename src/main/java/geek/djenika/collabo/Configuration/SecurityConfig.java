@@ -1,6 +1,7 @@
 package geek.djenika.collabo.Configuration;
 
 import geek.djenika.collabo.Filter.JwtAuthenticationFilter;
+import geek.djenika.collabo.Filter.JwtAuthorizationFilter;
 import geek.djenika.collabo.Model.Utilisateur;
 import geek.djenika.collabo.Service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -45,6 +47,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         //Ajout des filtres
         http.addFilter(new JwtAuthenticationFilter(authenticationManagerBean()));
+        //Pour permettre l'authentification avant toute requêtteos
+        http.addFilterBefore(new JwtAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
 
         //Demander l'authentification à chaque requette
         http.authorizeRequests().anyRequest().authenticated();
