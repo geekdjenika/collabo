@@ -54,13 +54,15 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         //Algorithme de chiffrement
         Algorithm algorithm = Algorithm.HMAC256("__inc0nnu__");
 
+        //AccesToken
         String jwtAccessToken = JWT.create()
                 .withSubject(user.getUsername())
-                        .withExpiresAt(new Date(System.currentTimeMillis() + 5 * 60 * 1000))
+                        .withExpiresAt(new Date(System.currentTimeMillis() + 1 * 60 * 1000))
                                 .withIssuer(request.getRequestURL().toString())
                                         .withClaim("profils",user.getAuthorities().stream().map(grantedAuthority -> grantedAuthority.getAuthority()).collect(Collectors.toList()))
                                                 .  sign(algorithm);
 
+        //RefreshToken
         String jwtRefreshToken = JWT.create()
                 .withSubject(user.getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis() + 15 * 60 * 1000))

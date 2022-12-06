@@ -16,9 +16,6 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import java.util.ArrayList;
@@ -43,7 +40,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers().frameOptions().disable();
 
         //Activer le formulaire d'authentification
-        //http.formLogin();
+        http.formLogin();
+
+        //Ajouter OAuth2
+        //http.oauth2Login();
+
+        //Authoriser le lien du refresh token
+        http.authorizeRequests().antMatchers("/refreshToken/**").permitAll();
 
         //Ajout des filtres
         http.addFilter(new JwtAuthenticationFilter(authenticationManagerBean()));
@@ -57,20 +60,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-        auth.userDetailsService(new UserDetailsService() {
-            @Override
-            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        auth.userDetailsService(username -> {
 
-                Utilisateur utilisateur = accountService.loadUserByUsername(username);
+            Utilisateur utilisateur = accountService.loadUserByUsername(username);
 
-                //Conversion de la liste de rôle en granted authorities
-                Collection<GrantedAuthority> authorities = new ArrayList<>();
-                utilisateur.getProfils().forEach(profil -> {
-                    authorities.add(new SimpleGrantedAuthority(profil.getRole()));
-                });
+            //Conversion de la liste de rôle en granted authorities
+            Collection<GrantedAuthority> authorities = new ArrayList<>();
+            utilisateur.getProfils().forEach(profil -> authorities.add(new SimpleGrantedAuthority(profil.getRole())));
 
-                return new User(utilisateur.getUsername(), utilisateur.getPassword(),authorities);
-            }
+            return new User(utilisateur.getUsername(), utilisateur.getPassword(),authorities);
         });
 
     }

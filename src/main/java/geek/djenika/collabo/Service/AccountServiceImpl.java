@@ -5,7 +5,6 @@ import geek.djenika.collabo.Model.Utilisateur;
 import geek.djenika.collabo.Repository.ProfilRepository;
 import geek.djenika.collabo.Repository.UtilisateurRepository;
 import lombok.ToString;
-import net.bytebuddy.implementation.bind.MethodDelegationBinder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
